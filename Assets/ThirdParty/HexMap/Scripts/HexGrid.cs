@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 public class HexGrid : MonoBehaviour {
 
-	public int cellCountX = 20, cellCountZ = 15;
+	public int cellCountX = 15, cellCountZ = 20;
 
-	public bool wrapping;
+	public bool wrapping = false;
 
 	public HexCell cellPrefab;
 	public Text cellLabelPrefab;
