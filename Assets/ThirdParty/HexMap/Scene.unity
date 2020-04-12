@@ -9000,7 +9000,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1235598785
 GameObject:
   m_ObjectHideFlags: 0
@@ -11044,8 +11044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414a0fc06528949a0baff4f719b04a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellCountX: 15
-  cellCountZ: 20
+  cellCountX: 9
+  cellCountZ: 18
   wrapping: 0
   cellPrefab: {fileID: 11422220, guid: 94c2312396697489abc866a188f80152, type: 3}
   cellLabelPrefab: {fileID: 11470134, guid: f68794ca03b6f4510b9a5bd6ee9ba2f4, type: 3}
@@ -15454,6 +15454,7 @@ MonoBehaviour:
   moveSpeedMinZoom: 400
   moveSpeedMaxZoom: 100
   rotationSpeed: 180
+  offsetMoveCount: 4
   grid: {fileID: 1571186511}
 --- !u!1 &2104049595
 GameObject:

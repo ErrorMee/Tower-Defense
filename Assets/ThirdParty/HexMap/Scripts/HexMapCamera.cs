@@ -10,7 +10,9 @@ public class HexMapCamera : MonoBehaviour {
 
 	public float rotationSpeed;
 
-	Transform swivel, stick;
+    public float offsetMoveCount = 0;
+
+    Transform swivel, stick;
 
 	public HexGrid grid;
 
@@ -95,11 +97,15 @@ public class HexMapCamera : MonoBehaviour {
 	}
 
 	Vector3 ClampPosition (Vector3 position) {
-		float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
-		position.x = Mathf.Clamp(position.x, 0f, xMax);
+        float xMin = offsetMoveCount * HexMetrics.innerDiameter;
+        float xMax = (grid.cellCountX - 0.5f - offsetMoveCount) * HexMetrics.innerDiameter;
+		position.x = Mathf.Clamp(position.x, xMin, xMax);
 
-		float zMax = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
-		position.z = Mathf.Clamp(position.z, 0f, zMax);
+        float addViewCellCountZ = offsetMoveCount * grid.cellCountZ / grid.cellCountX;
+
+        float zMin = addViewCellCountZ * (1.5f * HexMetrics.outerRadius);
+        float zMax = (grid.cellCountZ - 1 - addViewCellCountZ) * (1.5f * HexMetrics.outerRadius);
+		position.z = Mathf.Clamp(position.z, zMin, zMax);
 
 		return position;
 	}
