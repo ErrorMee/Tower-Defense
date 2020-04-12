@@ -157,7 +157,7 @@ public class HexMapGenerator : MonoBehaviour {
 		CreateLand();
 		ErodeLand();
 		CreateClimate();
-		CreateRivers();
+		//CreateRivers();
 		SetTerrainType();
 		for (int i = 0; i < cellCount; i++) {
 			grid.GetCell(i).SearchPhase = 0;
