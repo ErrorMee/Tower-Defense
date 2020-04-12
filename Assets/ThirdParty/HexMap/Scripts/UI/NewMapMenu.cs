@@ -29,19 +29,23 @@ public class NewMapMenu : MonoBehaviour {
 	}
 
 	public void CreateSmallMap () {
-		CreateMap(20, 15);
+		CreateMap(3, 4);
 	}
 
 	public void CreateMediumMap () {
-		CreateMap(40, 30);
+		CreateMap(6, 8);
 	}
 
 	public void CreateLargeMap () {
-		CreateMap(80, 60);
+		CreateMap(12, 16);
 	}
 
 	void CreateMap (int x, int z) {
-		if (generateMaps) {
+
+        x *= HexMetrics.chunkSizeX;
+        z *= HexMetrics.chunkSizeZ;
+
+        if (generateMaps) {
 			mapGenerator.GenerateMap(x, z, wrapping);
 		}
 		else {
