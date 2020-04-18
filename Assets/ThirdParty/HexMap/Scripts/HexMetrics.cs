@@ -78,7 +78,12 @@ public static class HexMetrics {
 	public static Texture2D noiseSource;
 
 	public static Vector4 SampleNoise (Vector3 position) {
-		Vector4 sample = noiseSource.GetPixelBilinear(
+        if (noiseSource == null)
+        {
+            return Vector4.one;
+        }
+
+        Vector4 sample = noiseSource.GetPixelBilinear(
 			position.x * noiseScale,
 			position.z * noiseScale
 		);
@@ -92,8 +97,7 @@ public static class HexMetrics {
 				sample2, sample, position.x * (1f / innerDiameter) - 0.5f
 			);
 		}
-
-		return sample;
+        return sample;
 	}
 
 	public static int wrapSize;
