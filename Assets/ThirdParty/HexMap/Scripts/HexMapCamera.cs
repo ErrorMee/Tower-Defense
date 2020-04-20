@@ -53,11 +53,12 @@ public class HexMapCamera : MonoBehaviour {
 			AdjustRotation(rotationDelta);
 		}
 
-		float xDelta = Input.GetAxis("Horizontal");
-		float zDelta = Input.GetAxis("Vertical");
-		if (xDelta != 0f || zDelta != 0f) {
-			AdjustPosition(xDelta, zDelta);
-		}
+		//float xDelta = Input.GetAxis("Horizontal");
+		//float zDelta = Input.GetAxis("Vertical");
+		//if (xDelta != 0f || zDelta != 0f)
+		//{
+		//	AdjustPosition(xDelta, zDelta);
+		//}
 	}
 
 	void AdjustZoom (float delta) {
@@ -81,7 +82,7 @@ public class HexMapCamera : MonoBehaviour {
 		transform.localRotation = Quaternion.Euler(0f, rotationAngle, 0f);
 	}
 
-	void AdjustPosition (float xDelta, float zDelta) {
+	public void AdjustPosition (float xDelta, float zDelta) {
 		Vector3 direction =
 			transform.localRotation *
 			new Vector3(xDelta, 0f, zDelta).normalized;
