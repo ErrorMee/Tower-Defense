@@ -10,7 +10,7 @@ public class HexMapCamera : MonoBehaviour {
 
 	public float rotationSpeed;
 
-    public float offsetMoveCount = 0;
+    public float offsetMoveCount = 3f;
 
     Transform swivel, stick;
 
@@ -108,24 +108,20 @@ public class HexMapCamera : MonoBehaviour {
 
 
 	Vector3 ClampPosition (Vector3 position) {
-		//float xMin = offsetMoveCount * HexMetrics.innerDiameter;
-		//float xMax = (grid.cellCountX - 0.5f - offsetMoveCount) * HexMetrics.innerDiameter;
-		//position.x = Mathf.Clamp(position.x, xMin, xMax);
+		float xMin = offsetMoveCount * HexMetrics.innerDiameter;
+		float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
+		position.x = Mathf.Clamp(position.x, xMin, xMax - xMin);
+		
+		float zMax = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
+		float offset = (xMax * Screen.height / Screen.width - zMax) / 2 - 18;
+		float zMin = xMin * Screen.height / Screen.width + offset;
+		position.z = Mathf.Clamp(position.z, zMin, zMax - zMin);
 
 		//float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
 		//position.x = Mathf.Clamp(position.x, 0, xMax);
 
-		//float addViewCellCountZ = offsetMoveCount * grid.cellCountZ / grid.cellCountX;
-
-		//float zMin = addViewCellCountZ * (1.5f * HexMetrics.outerRadius);
-		//float zMax = (grid.cellCountZ - 1 - addViewCellCountZ) * (1.5f * HexMetrics.outerRadius);
-		//position.z = Mathf.Clamp(position.z, zMin, zMax);
-
-		float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
-		position.x = Mathf.Clamp(position.x, 0, xMax);
-
-		float zMax = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
-		position.z = Mathf.Clamp(position.z, 0, zMax);
+		//float zMax = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
+		//position.z = Mathf.Clamp(position.z, 0, zMax);
 		return position;
 	}
 
