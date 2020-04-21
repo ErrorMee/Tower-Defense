@@ -97,17 +97,35 @@ public class HexMapCamera : MonoBehaviour {
 			grid.wrapping ? WrapPosition(position) : ClampPosition(position);
 	}
 
+	public void CenterPostion()
+	{
+		Vector3 position = transform.localPosition;
+		position.x = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter / 2;
+		position.z = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius) / 2;
+		transform.localPosition =
+			grid.wrapping ? WrapPosition(position) : ClampPosition(position);
+	}
+
+
 	Vector3 ClampPosition (Vector3 position) {
-        float xMin = offsetMoveCount * HexMetrics.innerDiameter;
-        float xMax = (grid.cellCountX - 0.5f - offsetMoveCount) * HexMetrics.innerDiameter;
-		position.x = Mathf.Clamp(position.x, xMin, xMax);
+		//float xMin = offsetMoveCount * HexMetrics.innerDiameter;
+		//float xMax = (grid.cellCountX - 0.5f - offsetMoveCount) * HexMetrics.innerDiameter;
+		//position.x = Mathf.Clamp(position.x, xMin, xMax);
 
-        float addViewCellCountZ = offsetMoveCount * grid.cellCountZ / grid.cellCountX;
+		//float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
+		//position.x = Mathf.Clamp(position.x, 0, xMax);
 
-        float zMin = addViewCellCountZ * (1.5f * HexMetrics.outerRadius);
-        float zMax = (grid.cellCountZ - 1 - addViewCellCountZ) * (1.5f * HexMetrics.outerRadius);
-		position.z = Mathf.Clamp(position.z, zMin, zMax);
+		//float addViewCellCountZ = offsetMoveCount * grid.cellCountZ / grid.cellCountX;
 
+		//float zMin = addViewCellCountZ * (1.5f * HexMetrics.outerRadius);
+		//float zMax = (grid.cellCountZ - 1 - addViewCellCountZ) * (1.5f * HexMetrics.outerRadius);
+		//position.z = Mathf.Clamp(position.z, zMin, zMax);
+
+		float xMax = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter;
+		position.x = Mathf.Clamp(position.x, 0, xMax);
+
+		float zMax = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
+		position.z = Mathf.Clamp(position.z, 0, zMax);
 		return position;
 	}
 

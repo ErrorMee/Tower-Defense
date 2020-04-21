@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class HexGrid : MonoBehaviour {
 
-	public int cellCountX = 15, cellCountZ = 20;
+	public int cellCountX = 9, cellCountZ = 18;
 
 	public bool wrapping = false;
 
@@ -18,6 +18,8 @@ public class HexGrid : MonoBehaviour {
 	public Texture2D noiseSource;
 
 	public int seed;
+
+	public HexMapCamera hexMapCamera;
 
 	public bool HasPath {
 		get {
@@ -96,6 +98,8 @@ public class HexGrid : MonoBehaviour {
 		cellShaderData.Initialize(cellCountX, cellCountZ);
 		CreateChunks();
 		CreateCells();
+
+		hexMapCamera.CenterPostion();
 		return true;
 	}
 

@@ -65,7 +65,7 @@ public class TouchController : MonoBehaviour
 
     private void FingerChangedHandler(object sender, GestureStateChangeEventArgs e)
     {
-        Debug.Log(e.State);
+        //Debug.Log(e.State);
         if (!EditMode)
         {
             switch (e.State)
