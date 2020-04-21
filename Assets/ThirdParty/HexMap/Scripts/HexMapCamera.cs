@@ -43,15 +43,15 @@ public class HexMapCamera : MonoBehaviour {
 	}
 
 	void Update () {
-		float zoomDelta = Input.GetAxis("Mouse ScrollWheel");
-		if (zoomDelta != 0f) {
-			AdjustZoom(zoomDelta);
-		}
+		//float zoomDelta = Input.GetAxis("Mouse ScrollWheel");
+		//if (zoomDelta != 0f) {
+		//	AdjustZoom(zoomDelta);
+		//}
 
-		float rotationDelta = Input.GetAxis("Rotation");
-		if (rotationDelta != 0f) {
-			AdjustRotation(rotationDelta);
-		}
+		//float rotationDelta = Input.GetAxis("Rotation");
+		//if (rotationDelta != 0f) {
+		//	AdjustRotation(rotationDelta);
+		//}
 
 		//float xDelta = Input.GetAxis("Horizontal");
 		//float zDelta = Input.GetAxis("Vertical");
@@ -61,7 +61,7 @@ public class HexMapCamera : MonoBehaviour {
 		//}
 	}
 
-	void AdjustZoom (float delta) {
+	public void AdjustZoom (float delta) {
 		zoom = Mathf.Clamp01(zoom + delta);
 
 		float distance = Mathf.Lerp(stickMinZoom, stickMaxZoom, zoom);
@@ -71,7 +71,7 @@ public class HexMapCamera : MonoBehaviour {
 		swivel.localRotation = Quaternion.Euler(angle, 0f, 0f);
 	}
 
-	void AdjustRotation (float delta) {
+	public void AdjustRotation (float delta) {
 		rotationAngle += delta * rotationSpeed * Time.deltaTime;
 		if (rotationAngle < 0f) {
 			rotationAngle += 360f;
