@@ -3595,6 +3595,8 @@ GameObject:
   - component: {fileID: 481091618}
   - component: {fileID: 481091616}
   - component: {fileID: 481091617}
+  - component: {fileID: 481091619}
+  - component: {fileID: 481091620}
   m_Layer: 0
   m_Name: Touch
   m_TagString: Untagged
@@ -3631,9 +3633,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hexMapCamera: {fileID: 2102140320}
+  hexMapEditor: {fileID: 2142000451}
+  hexGameUI: {fileID: 333297601}
   twoFingerMoveGesture: {fileID: 481091618}
   manipulationGesture: {fileID: 481091616}
-  PanSpeed: 0.05
+  dblclickGesture: {fileID: 481091620}
+  longPressGesture: {fileID: 481091619}
+  PanSpeed: 0.02
   RotationSpeed: 0.5
   ZoomSpeed: 0.5
 --- !u!114 &481091616
@@ -3731,6 +3737,75 @@ MonoBehaviour:
   type: 1
   screenTransformThreshold: 0.05
   minScreenPointsDistance: 0.5
+--- !u!114 &481091619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481091613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c8d97aff62a473e888feae3bec54cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToPress: 1
+  distanceLimit: Infinity
+--- !u!114 &481091620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481091613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+  basicEditor: 0
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnTap:
+    m_PersistentCalls:
+      m_Calls: []
+  numberOfTapsRequired: 2
+  timeLimit: 1
+  distanceLimit: Infinity
+  combinePointers: 0
+  combinePointersInterval: 0.3
 --- !u!1 &482085444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12324,6 +12399,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 333297601}
+        m_MethodName: SetEditMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 481091615}
         m_MethodName: SetEditMode
         m_Mode: 0
         m_Arguments:

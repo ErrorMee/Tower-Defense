@@ -23,29 +23,35 @@ public class HexGameUI : MonoBehaviour {
 
 	void Update () {
 		if (!EventSystem.current.IsPointerOverGameObject()) {
-			if (Input.GetMouseButtonDown(0)) {
-				DoSelection();
-			}
-			else if (selectedUnit) {
-				if (Input.GetMouseButtonDown(1)) {
-					DoMove();
-				}
-				else {
+			//if (Input.GetMouseButtonDown(0)) {
+			//	DoSelection();
+			//}
+			//else 
+			if (selectedUnit) {
+				//if (Input.GetMouseButtonDown(1)) {
+				//	DoMove();
+				//}
+				//else 
+				{
 					DoPathfinding();
 				}
 			}
 		}
 	}
 
-	void DoSelection () {
+	public HexUnit DoSelection () {
+		//Debug.Log("DoSelection");
 		grid.ClearPath();
 		UpdateCurrentCell();
 		if (currentCell) {
 			selectedUnit = currentCell.Unit;
 		}
+
+		return selectedUnit;
 	}
 
-	void DoPathfinding () {
+	public void DoPathfinding () {
+		//Debug.Log("DoPathfinding");
 		if (UpdateCurrentCell()) {
 			if (currentCell && selectedUnit.IsValidDestination(currentCell)) {
 				grid.FindPath(selectedUnit.Location, currentCell, selectedUnit);
@@ -56,7 +62,8 @@ public class HexGameUI : MonoBehaviour {
 		}
 	}
 
-	void DoMove () {
+	public void DoMove () {
+		//Debug.Log("DoMove");
 		if (grid.HasPath) {
 			selectedUnit.Travel(grid.GetPath());
 			grid.ClearPath();
