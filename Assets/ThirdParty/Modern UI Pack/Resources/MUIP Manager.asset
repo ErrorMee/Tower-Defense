@@ -96,7 +96,7 @@ MonoBehaviour:
   toggleTextColor: {r: 1, g: 1, b: 1, a: 1}
   toggleBorderColor: {r: 1, g: 1, b: 1, a: 1}
   toggleBackgroundColor: {r: 1, g: 1, b: 1, a: 0.29411766}
-  toggleCheckColor: {r: 1, g: 1, b: 1, a: 1}
+  toggleCheckColor: {r: 0.94509804, g: 0.31764707, b: 0.31764707, a: 1}
   tooltipFont: {fileID: 11400000, guid: 84dd14695854bbc43a5faa24fcf93d0d, type: 2}
   tooltipFontSize: 22
   tooltipTextColor: {r: 1, g: 1, b: 1, a: 1}
