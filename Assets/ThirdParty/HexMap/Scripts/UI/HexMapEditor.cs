@@ -8,16 +8,16 @@ public class HexMapEditor : MonoBehaviour {
 
 	public Material terrainMaterial;
 
-	int activeElevation;
-	int activeWaterLevel;
+    int activeElevation;
+    int activeWaterLevel;
 
 	int activeUrbanLevel, activeFarmLevel, activePlantLevel, activeSpecialIndex;
 
 	int activeTerrainTypeIndex = -1;
 
-	int brushSize;
+    int brushSize;
 
-	bool applyElevation = false;
+    bool applyElevation = false;
 	bool applyWaterLevel = false;
 
 	bool applyUrbanLevel, applyFarmLevel, applyPlantLevel, applySpecialIndex;

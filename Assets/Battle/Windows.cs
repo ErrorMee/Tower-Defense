@@ -6,60 +6,39 @@ using UnityEngine.UI;
 
 public class Windows : MonoBehaviour
 {
-    [SerializeField] private SwitchManager testMode;
+    [SerializeField] private SwitchManager menuSwitch;
 
-    [SerializeField] private Transform editTransforms;
-    [SerializeField] private Transform testTransforms;
+    [SerializeField] private MenuEdit menuEdit;
+    [SerializeField] private MenuTest menuTest;
 
-    [SerializeField] private SwitchManager editSet;
-    [SerializeField] private ModalWindowManager settingTabs;
-    [SerializeField] private Button settingTabsCloseBtn;
+    [SerializeField] private HexMapEditor hexMapEditor;
+    [SerializeField] private HexGameUI gameUI;
+    [SerializeField] private TouchController touchController;
 
     void Start()
     {
-        testMode.OnEvents.AddListener(OnTest);
-        testMode.OffEvents.AddListener(OffTest);
-        OffTest();
-
-        editSet.OnEvents.AddListener(OnEditSet);
-        editSet.OffEvents.AddListener(OffEditSet);
-
-        ClickListener.Get(settingTabsCloseBtn.gameObject).SetClickHandler(SettingTabsClose);
+        menuSwitch.OnEvents.AddListener(OnMenu);
+        menuSwitch.OffEvents.AddListener(OffMenu);
+        OffMenu();
     }
 
-    private void OnTest()
+    private void OnMenu()
     {
-        if (editSet.isOn)
-        {
-            editSet.AnimateSwitch();
-            settingTabs.CloseWindow();
-        }
-        editTransforms.gameObject.SetActive(false);
-        testTransforms.gameObject.SetActive(true);
+        menuEdit.Show(false);
+        menuTest.Show(true);
+
+        hexMapEditor.SetEditMode(false);
+        gameUI.SetEditMode(false);
+        touchController.SetEditMode(false);
     }
 
-    private void OffTest()
+    private void OffMenu()
     {
-        editTransforms.gameObject.SetActive(true);
-        testTransforms.gameObject.SetActive(false);
-    }
+        menuEdit.Show(true);
+        menuTest.Show(false);
 
-
-    private void OnEditSet()
-    {
-        settingTabs.OpenWindow();
-    }
-
-    private void OffEditSet()
-    {
-        settingTabs.CloseWindow();
-    }
-
-    private void SettingTabsClose(GameObject gameObject)
-    {
-        if (editSet.isOn)
-        {
-            editSet.AnimateSwitch();
-        }
+        hexMapEditor.SetEditMode(true);
+        gameUI.SetEditMode(true);
+        touchController.SetEditMode(true);
     }
 }
