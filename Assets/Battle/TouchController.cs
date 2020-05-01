@@ -49,6 +49,11 @@ public class TouchController : MonoBehaviour
 
     private void FingerTransformHandler(object sender, System.EventArgs e)
     {
+        if (hexMapEditor.validEdit)
+        {
+            return;
+        }
+
         Vector3 vector = twoFingerMoveGesture.DeltaPosition * PanSpeed;
 
         if (touchState == TouchState.Unit)

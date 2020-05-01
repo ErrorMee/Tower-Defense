@@ -14,7 +14,6 @@ public class Windows : MonoBehaviour
     [SerializeField] private HexMapEditor hexMapEditor;
     [SerializeField] private HexGameUI gameUI;
     [SerializeField] private TouchController touchController;
-
     void Start()
     {
         menuSwitch.OnEvents.AddListener(OnMenu);

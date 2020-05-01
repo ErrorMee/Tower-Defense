@@ -108,6 +108,7 @@ public class EditTabs : MonoBehaviour
         newBtn.onClick.AddListener(() => { mapMenu.Open(); });
         loadBtn.onClick.AddListener(() => { saveLoadMenu.Open(false); });
         saveBtn.onClick.AddListener(() => { saveLoadMenu.Open(true); });
+
     }
 
     private void SetToggleEvent(Toggle toggle, Action<int> call, int index)
@@ -128,7 +129,63 @@ public class EditTabs : MonoBehaviour
         }
         else
         {
+            ClearStatus();
             tabWindow.CloseWindow();
+        }
+    }
+
+    private void ClearStatus()
+    {
+        terrainToggles[0].isOn = true;
+        wallToggles[0].isOn = true;
+        roadToggles[0].isOn = true;
+        riverToggles[0].isOn = true;
+
+        heightToggle.isOn = false;
+        waterToggle.isOn = false;
+
+        urbanToggle.isOn = false;
+        farmToggle.isOn = false;
+        plantToggle.isOn = false;
+        specialToggle.isOn = false;
+    }
+
+    public void OnTabSelect(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                wallToggles[0].isOn = true;
+                roadToggles[0].isOn = true;
+                riverToggles[0].isOn = true;
+
+                waterToggle.isOn = false;
+
+                urbanToggle.isOn = false;
+                farmToggle.isOn = false;
+                plantToggle.isOn = false;
+                specialToggle.isOn = false;
+                break;
+            case 1:
+                terrainToggles[0].isOn = true;
+
+                heightToggle.isOn = false;
+
+                urbanToggle.isOn = false;
+                farmToggle.isOn = false;
+                plantToggle.isOn = false;
+                specialToggle.isOn = false;
+                break;
+            case 2:
+
+                urbanToggle.isOn = false;
+                farmToggle.isOn = false;
+                plantToggle.isOn = false;
+                specialToggle.isOn = false;
+                break;
+            case 3:
+                ClearStatus();
+                break;
         }
     }
 }

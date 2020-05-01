@@ -32,12 +32,23 @@ public class HexMapEditor : MonoBehaviour {
 	HexDirection dragDirection;
 	HexCell previousCell;
 
+	public bool validEdit;
+
+	private void UpdateValidEdit()
+	{
+		validEdit = (activeTerrainTypeIndex > -1 || applyElevation || applyWaterLevel ||
+			riverMode != OptionalToggle.Ignore || roadMode != OptionalToggle.Ignore || walledMode != OptionalToggle.Ignore
+			|| applyUrbanLevel || applyFarmLevel || applyPlantLevel || applySpecialIndex);
+	}
+
 	public void SetTerrainTypeIndex (int index) {
 		activeTerrainTypeIndex = index;
+		UpdateValidEdit();
 	}
 
 	public void SetApplyElevation (bool toggle) {
 		applyElevation = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetElevation (float elevation) {
@@ -46,6 +57,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetApplyWaterLevel (bool toggle) {
 		applyWaterLevel = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetWaterLevel (float level) {
@@ -54,6 +66,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetApplyUrbanLevel (bool toggle) {
 		applyUrbanLevel = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetUrbanLevel (float level) {
@@ -62,6 +75,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetApplyFarmLevel (bool toggle) {
 		applyFarmLevel = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetFarmLevel (float level) {
@@ -70,6 +84,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetApplyPlantLevel (bool toggle) {
 		applyPlantLevel = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetPlantLevel (float level) {
@@ -78,6 +93,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetApplySpecialIndex (bool toggle) {
 		applySpecialIndex = toggle;
+		UpdateValidEdit();
 	}
 
 	public void SetSpecialIndex (float index) {
@@ -90,14 +106,17 @@ public class HexMapEditor : MonoBehaviour {
 
 	public void SetRiverMode (int mode) {
 		riverMode = (OptionalToggle)mode;
+		UpdateValidEdit();
 	}
 
 	public void SetRoadMode (int mode) {
 		roadMode = (OptionalToggle)mode;
+		UpdateValidEdit();
 	}
 
 	public void SetWalledMode (int mode) {
 		walledMode = (OptionalToggle)mode;
+		UpdateValidEdit();
 	}
 
 	public void SetEditMode (bool toggle) {
@@ -121,6 +140,13 @@ public class HexMapEditor : MonoBehaviour {
 
 	void Update () {
 		if (!EventSystem.current.IsPointerOverGameObject()) {
+
+			if (Input.touchCount == 1)
+			{
+				HandleInput();
+				return;
+			}
+			
 			if (Input.GetMouseButton(0)) {
 				HandleInput();
 				return;
