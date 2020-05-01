@@ -37,6 +37,8 @@ public class EditTabs : MonoBehaviour
     [SerializeField] private SaveLoadMenu saveLoadMenu;
     [SerializeField] private Button saveBtn;
 
+    [SerializeField] private Button resetMapBtn, resetUnitBtn, resetAllBtn;
+
     private void Start()
     {
         for (int i = 0; i < terrainToggles.Length; i++)
@@ -109,6 +111,9 @@ public class EditTabs : MonoBehaviour
         loadBtn.onClick.AddListener(() => { saveLoadMenu.Open(false); });
         saveBtn.onClick.AddListener(() => { saveLoadMenu.Open(true); });
 
+        resetMapBtn.onClick.AddListener(() => { saveLoadMenu.Open(true); });
+        resetUnitBtn.onClick.AddListener(() => { saveLoadMenu.Open(true); });
+        resetAllBtn.onClick.AddListener(() => { saveLoadMenu.Open(true); });
     }
 
     private void SetToggleEvent(Toggle toggle, Action<int> call, int index)

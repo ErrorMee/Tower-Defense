@@ -9,7 +9,6 @@ public class MenuEdit : MonoBehaviour
     [SerializeField] private SwitchManager tab;
     [SerializeField] private SwitchManager grid;
     [SerializeField] private EditTabs tabWindow;
-    [SerializeField] private Button tabWindowCloseBtn;
 
     public Material terrainMaterial;
 
@@ -19,7 +18,6 @@ public class MenuEdit : MonoBehaviour
         tab.OffEvents.AddListener(OffTab);
         grid.OnEvents.AddListener(OnGrid);
         grid.OffEvents.AddListener(OffGrid);
-        tabWindowCloseBtn.onClick.AddListener(TabWindowClose);
     }
 
     private void OnTab()
@@ -60,14 +58,6 @@ public class MenuEdit : MonoBehaviour
             {
                 terrainMaterial.DisableKeyword("GRID_ON");
             }
-        }
-    }
-
-    private void TabWindowClose()
-    {
-        if (tab.isOn)
-        {
-            tab.AnimateSwitch();
         }
     }
 }
