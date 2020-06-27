@@ -23,7 +23,7 @@ public class TouchController : MonoBehaviour
 
     public float PanSpeed = 0.02f;
     public float RotationSpeed = 0.5f;
-    public float ZoomSpeed = 0.5f;
+    public float ZoomSpeed = 1f;
 
     private bool EditMode = true;
 
@@ -31,40 +31,46 @@ public class TouchController : MonoBehaviour
 
     private void OnEnable()
     {
-        twoFingerMoveGesture.Transformed += FingerTransformHandler;
+        twoFingerMoveGesture.Transformed += AdjustPosition;
         twoFingerMoveGesture.StateChanged += FingerChangedHandler;
-        manipulationGesture.Transformed += ManipulationTransformedHandler;
+        manipulationGesture.Transformed += RotationAndZoom;
         dblclickGesture.Tapped += DBLTappedHandler;
         longPressGesture.StateChanged += LongPressedHandler;
     }
 
     private void OnDisable()
     {
-        twoFingerMoveGesture.Transformed -= FingerTransformHandler;
+        twoFingerMoveGesture.Transformed -= AdjustPosition;
         twoFingerMoveGesture.StateChanged -= FingerChangedHandler;
-        manipulationGesture.Transformed -= ManipulationTransformedHandler;
+        manipulationGesture.Transformed -= RotationAndZoom;
         dblclickGesture.Tapped -= DBLTappedHandler;
         longPressGesture.StateChanged -= LongPressedHandler;
     }
 
-    private void FingerTransformHandler(object sender, System.EventArgs e)
+    private void AdjustPosition(object sender, System.EventArgs e)
     {
         if (hexMapEditor.validEdit)
         {
             return;
         }
 
-        Vector3 vector = twoFingerMoveGesture.DeltaPosition * PanSpeed;
-
         if (touchState == TouchState.Unit)
         {
             
         } else
         {
-            if (vector.x != 0f || vector.y != 0f)
-            {
-                hexMapCamera.AdjustPosition(-vector.x, -vector.y);
-            }
+            //Vector3 vector = twoFingerMoveGesture.DeltaPosition * PanSpeed;
+
+            //if (vector.x != 0f || vector.y != 0f)
+            //{
+            //    hexMapCamera.AdjustPosition(-vector.x, -vector.y);
+            //}
+
+            //float deltaRotation = twoFingerMoveGesture.DeltaRotation * RotationSpeed;
+            //if (deltaRotation != 0f)
+            //{
+            //    hexMapCamera.AdjustRotation(deltaRotation);
+            //}
         }
     }
 
@@ -96,7 +102,7 @@ public class TouchController : MonoBehaviour
         }
     }
 
-    private void ManipulationTransformedHandler(object sender, System.EventArgs e)
+    private void RotationAndZoom(object sender, System.EventArgs e)
     {
         float deltaRotation = manipulationGesture.DeltaRotation * RotationSpeed;
         if (deltaRotation != 0f)
@@ -110,12 +116,12 @@ public class TouchController : MonoBehaviour
             hexMapCamera.AdjustZoom(deltaZoom);
         }
 
-        Vector3 vector = manipulationGesture.DeltaPosition * PanSpeed;
+        //Vector3 vector = manipulationGesture.DeltaPosition * PanSpeed;
 
-        if (vector.x != 0f || vector.y != 0f)
-        {
-            hexMapCamera.AdjustPosition(-vector.x, -vector.y);
-        }
+        //if (vector.x != 0f || vector.y != 0f)
+        //{
+        //    hexMapCamera.AdjustPosition(-vector.x, -vector.y);
+        //}
     }
 
     private void DBLTappedHandler(object sender, System.EventArgs e)
