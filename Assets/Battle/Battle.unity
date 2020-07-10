@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36282983, g: 0.56614596, b: 0.8437142, a: 1}
+  m_IndirectSpecularColor: {r: 0.3629006, g: 0.56618, b: 0.843711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20689,14 +20689,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067100554}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1752896679}
   m_Father: {fileID: 2102140319}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!1 &1073756643
 GameObject:
   m_ObjectHideFlags: 0
@@ -28597,7 +28597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellCountX: 24
-  cellCountZ: 28
+  cellCountZ: 20
   wrapping: 0
   cellPrefab: {fileID: 11422220, guid: 94c2312396697489abc866a188f80152, type: 3}
   cellLabelPrefab: {fileID: 11470134, guid: f68794ca03b6f4510b9a5bd6ee9ba2f4, type: 3}
@@ -37461,7 +37461,7 @@ MonoBehaviour:
   chunkSizeMax: 100
   highRiseProbability: 0.25
   sinkProbability: 0.2
-  landPercentage: 50
+  landPercentage: 30
   waterLevel: 3
   elevationMinimum: -2
   elevationMaximum: 8
@@ -38127,9 +38127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickMinZoom: -150
-  stickMaxZoom: -100
-  swivelMinZoom: 90
-  swivelMaxZoom: 90
+  stickMaxZoom: -150
+  swivelMinZoom: 65
+  swivelMaxZoom: 65
   moveSpeedMinZoom: 300
   moveSpeedMaxZoom: 100
   rotationSpeed: 180

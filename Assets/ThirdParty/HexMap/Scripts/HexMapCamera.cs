@@ -101,7 +101,10 @@ public class HexMapCamera : MonoBehaviour {
 	{
 		Vector3 position = transform.localPosition;
 		position.x = (grid.cellCountX - 0.5f) * HexMetrics.innerDiameter / 2;
-		position.z = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius) / 2;
+
+		float offsetZ = Mathf.Sqrt(swivelMinZoom / 90f);
+
+		position.z = (grid.cellCountZ - 1) * (1.5f * HexMetrics.outerRadius) / 2 * offsetZ;
 		transform.localPosition =
 			grid.wrapping ? WrapPosition(position) : ClampPosition(position);
 	}
