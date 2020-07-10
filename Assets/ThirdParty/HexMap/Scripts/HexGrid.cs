@@ -6,8 +6,9 @@ using System.Collections.Generic;
 
 public class HexGrid : MonoBehaviour {
 
-	public int cellCountX = 9, cellCountZ = 18;
-
+	public int cellCountX = 16, cellCountZ = 16;
+	public bool generateMaps = false;
+	public HexMapGenerator mapGenerator;
 	public bool wrapping = false;
 
 	public HexCell cellPrefab;
@@ -52,7 +53,16 @@ public class HexGrid : MonoBehaviour {
 		HexUnit.unitPrefab = unitPrefab;
 		cellShaderData = gameObject.AddComponent<HexCellShaderData>();
 		cellShaderData.Grid = this;
-		CreateMap(cellCountX, cellCountZ, wrapping);
+
+		if (generateMaps)
+		{
+			mapGenerator.GenerateMap(cellCountX, cellCountZ, wrapping);
+		}
+		else
+		{
+			CreateMap(cellCountX, cellCountZ, wrapping);
+		}
+		
 	}
 
 	public void AddUnit (HexUnit unit, HexCell location, float orientation) {
